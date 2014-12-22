@@ -38,8 +38,8 @@
 |
 */
 
-$route['default_controller'] = "welcome";
-$route['404_override'] = '';
+$route['default_controller'] = "scoreboard";
+$route['scoreboard.(json|html)'] = 'scoreboard/index/format/$1';
 
 
 /* End of file routes.php */
