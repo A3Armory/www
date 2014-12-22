@@ -71,7 +71,7 @@
       border-left: 0;
     }
     table td {
-      padding:18px;
+      padding:12px;
       border-top: 1px solid #ffffff;
       border-bottom:1px solid #e0e0e0;
       border-left: 1px solid #e0e0e0;
@@ -80,10 +80,10 @@
       background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
       background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
     }
-    table tr.even td {
-      background: #f6f6f6;
-      background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
-      background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+    table tr.even td:not(.icon) {
+      background: #f4f4f6;
+      background: -webkit-gradient(linear, left top, left bottom, from(#ebedeb), to(#f4f4f6));
+      background: -moz-linear-gradient(top,  #ebedeb,  #f4f4f6);
     }
     table tr:last-child td {
       border-bottom:0;
@@ -98,10 +98,35 @@
       -webkit-border-bottom-right-radius:3px;
       border-bottom-right-radius:3px;
     }
-    table tr:hover td {
+
+    table tr:hover td:not(.icon) {
       background: #f2f2f2;
       background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
       background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
+    }
+
+    table td.west {
+      background:  #3179ff;
+      width: 10px;
+    }
+
+    table td.east {
+      background: #ff383d;
+      width: 10px;
+    }
+
+    table td.guer {
+      background: #66c858;
+      width: 10px;
+    }
+
+    th.header {
+      background: url('public/img/bg.gif') right center no-repeat;
+      cursor: pointer;
+      font-weight: bold;
+      padding-left: 20px;
+      border-right: 1px solid #dad9c7;
+      margin-left: -1px;
     }
 
     th.headerSortUp {
@@ -110,7 +135,6 @@
 
     th.headerSortDown {
       background: url('public/img/desc.gif') right center no-repeat;
-
     }
 
   </style>
@@ -125,6 +149,7 @@
   <table id="scoreboard">
     <thead>
       <tr>
+        <th></th>
         <th>Name</th>
         <th>Side</th>
         <th>Player kills</th>
@@ -135,10 +160,13 @@
       </tr>
     </thead>
     <?php
+    $i = 1;
     foreach ($data as $uid => $pdata) {
       if (!is_object($pdata)) continue;
+      $class = strtolower($pdata->PlayerInfo->LastPlayerSide);
     ?>
     <tr>
+      <td class="icon <?php echo $class ?>"></td>
       <td><?php echo $pdata->PlayerInfo->Name ?></td>
       <td><?php echo $pdata->PlayerInfo->LastPlayerSide ?></td>
       <td><?php echo $pdata->PlayerScore->playerKills ?></td>
@@ -147,11 +175,14 @@
       <td><?php echo $pdata->PlayerScore->reviveCount ?></td>
       <td><?php echo $pdata->PlayerScore->captureCount ?></td>
     </tr>
-    <?php } ?>
+    <?php
+      $i++;
+    } ?>
+  </table>
 
     <script>
       $(function(){
-        $('#scoreboard').tablesorter({sortList: [[2,1],[3,1],[4,0],[5,1],[6,1]]});
+        $('#scoreboard').tablesorter({sortList: [[3,1]], widgets: ['zebra'], headers: {0:{sorter: false}}});
       });
     </script>
 </body>
