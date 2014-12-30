@@ -40,6 +40,8 @@
 
 $route['default_controller'] = "scoreboard";
 $route['scoreboard.(json|html)'] = 'scoreboard/index/format/$1';
+$route['leaderboard.(json|html)'] = 'leaderboard/index/format/$1';
+
 
 
 /* End of file routes.php */
