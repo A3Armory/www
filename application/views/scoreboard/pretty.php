@@ -71,7 +71,7 @@
       border-left: 0;
     }
     table td {
-      padding:12px;
+      padding: 5px 12px 5px 12px;
       border-top: 1px solid #ffffff;
       border-bottom:1px solid #e0e0e0;
       border-left: 1px solid #e0e0e0;
