@@ -12,11 +12,29 @@
   <script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"></script>
   <style type="text/css" >
     .wrapper {
-      width: 900px;
+      width: 850px;
+      padding: 0px;
+      margin: 0px;
+    }
+    body {
+      background-color: transparent;
+    }
+
+    #leaderboard {
+      background-color: #ffffff;
+    }
+    .col-sm-6 {
+      width: 100%;
+    }
+
+    div.dataTables_paginate {
+      float: left;
+      padding-left: 25%;
     }
   </style>
 </head>
 <body>
+  <center>
   <div class="wrapper">
     <table id="leaderboard" class="datatable table table-striped table-bordered">
       <thead>
@@ -48,10 +66,14 @@
       <?php }?>
     </table>
   </div>
+  </center>
 
     <script>
       $(document).ready( function () {
         $('#leaderboard').DataTable({
+          "bLengthChange": false,
+          "bInfo": false,
+          "bAutoWidth": false,
           "fnDrawCallback": function ( oSettings ) {
             /* Need to redo the counters if filtered or sorted */
             if ( oSettings.bSorted || oSettings.bFiltered )
@@ -68,8 +90,6 @@
           "order": [[ 2, "desc" ]]
         });
       });
-
-
     </script>
 </body>
 </html>
