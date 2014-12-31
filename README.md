@@ -37,14 +37,25 @@ Features:
 1. Install the the ElasticSearch CouchDB river plugin
 
   ```
-    ./bin/plugin -i couchdb-river -url https://github.com/A3Armory/www/releases/download/v0.0.1/elasticsearch-river-couchdb-2.4.2-micovery.zip
+    ./bin/plugin --install couchdb-river --url  https://github.com/A3Armory/www/releases/download/v0.0.1/elasticsearch-river-couchdb-2.4.2-micovery.zip
   ```
   (Note this is a [custom version](https://github.com/elasticsearch/elasticsearch-river-couchdb/pull/86) of the ES CouchDB River Plugin that allows for saving document revisions/history)
-2. Create the indexes
+2. Install the Kopf plugin 
 
-    You can do this from the command line using curl, [here is a file](https://github.com/A3Armory/www/blob/master/elasticsearch_curl.txt) with the curl commands
+  Since you are going to be managing, and working with ElasticSearch, you should also install the Kopf plugin to help you manage ES.
+  ```
+    ./bin/plugin --install lmenezes/elasticsearch-kopf/1.4.3
+  ```
+  You can access Kopf at http://localhost:9200/_plugin/kopf
+  
+3. Install Git Bash (Windows only)
 
+  If you are in Windows, you should install [MsyGit](https://msysgit.github.io/). It comes with Git bash, where you can the "curl" command line utility to talk to ElasticSearch.
 
+2. Create the A3Wasteland indexes
+
+   1. If you are on Windows, open up Git Bash,  (if you are on Linux, just open a new terminal)
+   2. Grab the contents of [this file](https://github.com/A3Armory/www/blob/master/elasticsearch_curl.txt), and paste it in the terminal.
 
   
 
