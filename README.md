@@ -37,7 +37,7 @@ Features:
 1. Install the the ElasticSearch CouchDB river plugin
 
   ```
-    plugin -i couchdb-river -url https://github.com/A3Armory/www/releases/download/v0.0.1/elasticsearch-river-couchdb-2.4.2-micovery.zip
+    ./plugin -i couchdb-river -url https://github.com/A3Armory/www/releases/download/v0.0.1/elasticsearch-river-couchdb-2.4.2-micovery.zip
   ```
   (Note this is a [custom version](https://github.com/elasticsearch/elasticsearch-river-couchdb/pull/86) of the ES CouchDB River Plugin that allows for saving document revisions/history)
 2. Create the indexes
