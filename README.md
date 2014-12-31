@@ -29,7 +29,7 @@ Features:
 
 #Seitting up the web-framework#
   1. Upload the entire repository contents into a directory in your web-server
-  2. Edit the ```application/config/globals.php``` to point to your CouchDB database, and ElasticSearch index.
+  2. Edit the ```application/config/globals.php``` to point to your CouchDB database, and ElasticSearch indexes.
 
 
 
