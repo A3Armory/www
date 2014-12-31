@@ -22,7 +22,7 @@ Features:
   1. [Apache HTTP Server](http://httpd.apache.org/)
   2. [PHP 5.1.6 or newer](http://php.net/)
   3. [CouchDB](http://couchdb.apache.org/) database (loaded for A3Wasteland data), and [ElasticSearch](http://www.elasticsearch.org/) (with propper indexes created)
-  4. Make sure that your web server machine is able to reach the machine(s) where CouchDB, and ElasticSearch are running. This is only needed if your website and database are in different machines. A good way to set this up is to make a firewall rule allowing incomming connections from the IP address web-server machine. **Do not open the CouchDB, and ElasticSearch ports to the world.**
+  4. Make sure that your web server machine is able to reach the machine(s) where CouchDB, and ElasticSearch are running (if they are on different machines).
 
 
 
