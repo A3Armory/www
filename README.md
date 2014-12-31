@@ -1,5 +1,7 @@
 ####What is this####
-This is a framework for Arma 3 Wasteland stats using CodeIgniter.
+This is a stats framework for [Arma 3 Wasteland](http://a3wasteland.com/) servers that use the [Sock-RPC-Stats fork](https://github.com/micovery/ArmA3_Wasteland.Altis) for database persistence.
+
+The framework works with stats saved in a CouchDB database, and indexed using ElasticSearch.
 
 Features:
 
