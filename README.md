@@ -25,9 +25,12 @@ Features:
     This only needed when your website and database are in different machines. A good way to set this up is to make a firewall rule allowing incomming connections from the IP address web-server machine. **Do not open the CouchDB, and ElasticSearch ports to the world.**
 
 
+
 ####Seitting up the web-framework####
   1. Upload the entire repository contents into a directory in your web-server
   2. Edit the ```application/config/globals.php``` to point to your CouchDB database, and ElasticSearch index.
+
+
 
 ####Setting up the ElasticSearch indexes####
 1. Install the the ElasticSearch CouchDB river plugin
@@ -37,7 +40,7 @@ Features:
   ```
 2. Create the indexes
 
-    You can do this from the command line using curl, here is a file with the curl commands
+    You can do this from the command line using curl, [here is a file](https://github.com/A3Armory/www/blob/master/elasticsearch_curl.txt) with the curl commands
 
 
 
