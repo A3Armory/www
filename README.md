@@ -50,7 +50,7 @@ Features:
   
 3. Install Git Bash (Windows only)
 
-  If you are in Windows, you should install [MsyGit](https://msysgit.github.io/). It comes with Git bash, where you can the "curl" command line utility to talk to ElasticSearch.
+  If you are in Windows, you should install [MsyGit](https://msysgit.github.io/). It comes with Git bash, where you can use the "curl" command line utility to talk to ElasticSearch.
 
 2. Create the A3Wasteland indexes
 
