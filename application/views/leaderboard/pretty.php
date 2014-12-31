@@ -85,7 +85,8 @@
             }
           },
           "aoColumnDefs": [
-            { "bSortable": false, "aTargets": [ 0 ] }
+            { "bSortable": false, "aTargets": [ 0 ] },
+            { "bSortable": false, "aTargets": [ 1 ], "sWidth": "200px" }
           ],
           "order": [[ 2, "desc" ]]
         });
