@@ -1,0 +1,132 @@
+
+#Setup the player data index
+curl -XDELETE localhost:9200/players
+curl -XPUT localhost:9200/players -d '
+{
+  "mappings": {
+    "player": {
+      "properties": {
+        "updatedAt_": {
+          "type": "date"
+        }
+      }
+    }
+  }
+}
+'
+
+curl -XDELETE localhost:9200/_river/players
+curl -XPUT localhost:9200/_river/players/_meta -d '
+{
+  "type": "couchdb",
+  "couchdb": {
+    "host": "localhost",
+    "port": 5984,
+    "db": "a3w",
+    "script": "if (ctx.doc.containsKey(\"PlayerInfo\"))  {ctx._type = \"player\";} else {ctx.ignore = true;}",
+    "filter": null
+  },
+  "index": {
+    "index": "players"
+  }
+}
+'
+
+#Setup the players list index
+curl -XDELETE localhost:9200/_river/players_list
+curl -XDELETE localhost:9200/players_list
+curl -XPUT localhost:9200/players_list -d '
+{
+  "mappings": {
+    "players_list": {
+      "properties": {
+        "players": {
+          "type": "nested"
+        }
+      }
+    }
+  }
+}
+'
+
+curl -XPUT localhost:9200/_river/players_list/_meta -d '
+{
+  "type": "couchdb",
+  "couchdb": {
+    "host": "localhost",
+    "port": 5984,
+    "db": "a3w",
+    "script": "if (ctx.doc._id.endsWith(\"PlayersList\"))  {ctx._type = \"players_list\"; def new_doc = [] as HashMap; new_doc._id = ctx.doc._id; new_doc.updatedAt_ = ctx.doc.updatedAt_; new_doc._rev = ctx.doc._rev; new_doc.players = [] as ArrayList; ctx.doc.each {k,v-> if (v instanceof Map && v.containsKey(\"PlayerInfo\")) {new_doc.players.add(v);}}; ctx.doc = new_doc;} else {ctx.ignore = true;} ",
+    "filter": null
+  },
+  "index": {
+    "index": "players_list"
+  }
+}
+'
+
+#Setup the objects list index
+curl -XDELETE localhost:9200/_river/objects_list
+curl -XDELETE localhost:9200/objects_list
+curl -XPUT localhost:9200/objects_list -d '
+{
+  "mappings": {
+    "objects_list": {
+      "properties": {
+        "objects": {
+          "type": "nested"
+        }
+      }
+    }
+  }
+}
+'
+
+curl -XPUT localhost:9200/_river/objects_list/_meta -d '
+{
+  "type": "couchdb",
+  "couchdb": {
+    "host": "localhost",
+    "port": 5984,
+    "db": "a3w",
+    "script": "if (ctx.doc._id.endsWith(\"Objects\"))  {ctx._type = \"objects_list\"; def new_doc = [] as HashMap; new_doc._id = ctx.doc._id; new_doc.updatedAt_ = ctx.doc.updatedAt_; new_doc._rev = ctx.doc._rev; new_doc.objects = [] as ArrayList; ctx.doc.each {k,v-> if (v instanceof Map && v.containsKey(\"Class\")) {new_doc.objects.add(v);}}; ctx.doc = new_doc;} else {ctx.ignore = true;} ",
+    "filter": null
+  },
+  "index": {
+    "index": "objects_list"
+  }
+}
+'
+
+#Setup the vehicles list index
+curl -XDELETE localhost:9200/_river/vehicles_list
+curl -XDELETE localhost:9200/vehicles_list
+curl -XPUT localhost:9200/vehicles_list -d '
+{
+  "mappings": {
+    "vehicles_list": {
+      "properties": {
+        "vehicles": {
+          "type": "nested"
+        }
+      }
+    }
+  }
+}
+'
+
+curl -XPUT localhost:9200/_river/vehicles_list/_meta -d '
+{
+  "type": "couchdb",
+  "couchdb": {
+    "host": "localhost",
+    "port": 5984,
+    "db": "a3w",
+    "script": "if (ctx.doc._id.endsWith(\"Vehicles\"))  {ctx._type = \"vehicles_list\"; def new_doc = [] as HashMap; new_doc._id = ctx.doc._id; new_doc.updatedAt_ = ctx.doc.updatedAt_; new_doc._rev = ctx.doc._rev; new_doc.vehicles = [] as ArrayList; ctx.doc.each {k,v-> if (v instanceof Map && v.containsKey(\"Class\")) {new_doc.vehicles.add(v);}}; ctx.doc = new_doc;} else {ctx.ignore = true;} ",
+    "filter": null
+  },
+  "index": {
+    "index": "vehicles_list"
+  }
+}
+'
