@@ -1,4 +1,4 @@
-####What is this####
+#What is this#
 This is a stats visualization framework for [Arma 3 Wasteland](http://a3wasteland.com/) servers that use the [Sock-RPC-Stats fork](https://github.com/micovery/ArmA3_Wasteland.Altis) for persistence.
 
 The framework works with stats saved in a CouchDB database, and indexed using ElasticSearch.
@@ -18,21 +18,22 @@ Features:
   (Shows same data as the scorebaord, but for the top 1000 players within the last month)
 
 
-#### Requirements ####
+# Requirements #
   1. [Apache HTTP Server](http://httpd.apache.org/)
   2. [PHP 5.1.6 or newer](http://php.net/)
-  3. [CouchDB](http://couchdb.apache.org/) database (with A3Wasteland data), and [ElasticSearch](http://www.elasticsearch.org/) (with propper indexes created)
+  3. [CouchDB](http://couchdb.apache.org/) database (with A3Wasteland data)
+  4. [ElasticSearch](http://www.elasticsearch.org/) (with propper indexes created)
   4. Make sure that your web server machine is able to reach the machine(s) where CouchDB, and ElasticSearch are running (if they are on different machines).
 
 
 
-####Seitting up the web-framework####
+#Seitting up the web-framework#
   1. Upload the entire repository contents into a directory in your web-server
   2. Edit the ```application/config/globals.php``` to point to your CouchDB database, and ElasticSearch index.
 
 
 
-####Setting up the ElasticSearch indexes####
+#Setting up the ElasticSearch indexes#
 1. Install the the ElasticSearch CouchDB river plugin
 
   ```
