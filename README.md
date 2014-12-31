@@ -1,7 +1,7 @@
 #A3W Stats#
 This is a stats visualization framework for [Arma 3 Wasteland](http://a3wasteland.com/) servers that use the [sock-rpc-stats](https://github.com/micovery/ArmA3_Wasteland.Altis) fork for persistence.
 
-The framework works with stats saved in a CouchDB database, and indexed using ElasticSearch.
+The framework works with stats saved in a [CouchDB](http://couchdb.apache.org/) database, and indexed using [ElasticSearch](http://www.elasticsearch.org/).
 
 Features:
 
