@@ -29,7 +29,7 @@ Features:
   1. Upload the entire repository contents into a directory in your web-server
   2. Edit the ```application/config/globals.php``` to point to your CouchDB database, and ElasticSearch index.
 
-###Setting up the ElasticSearch indexes###
+####Setting up the ElasticSearch indexes####
 1. Install the the ElasticSearch CouchDB river plugin
 
   ```
