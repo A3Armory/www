@@ -55,7 +55,7 @@ Features:
 2. Create the A3Wasteland indexes
 
    1. If you are on Windows, open up Git Bash,  (if you are on Linux, just open a new terminal)
-   2. Grab the contents of [this file](https://github.com/A3Armory/www/blob/master/elasticsearch_curl.txt), and paste it in the terminal.
+   2. Grab the contents of [this file](https://github.com/A3Armory/www/blob/master/elasticsearch_curl.txt), and paste it in the terminal. Note that all the curl commands in the file assume your database is named "a3w", if you have a different name, make sur to modify it in the file before running the commands.
 
   
 
