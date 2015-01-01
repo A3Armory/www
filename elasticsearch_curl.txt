@@ -80,7 +80,8 @@ curl -XPUT localhost:9200/players_list -d '
     "players_list": {
       "properties": {
         "players": {
-          "type": "nested"
+          "type": "nested",
+          "include_in_parent": true
         },
         "updatedAt_": {
           "type": "date"
@@ -120,7 +121,8 @@ curl -XPUT localhost:9200/players_list_history -d '
     "players_list_history": {
       "properties": {
         "players": {
-          "type": "nested"
+          "type": "nested",
+          "include_in_parent": true
         },
         "updatedAt_": {
           "type": "date"
@@ -161,7 +163,8 @@ curl -XPUT localhost:9200/objects_list -d '
     "objects_list": {
       "properties": {
         "objects": {
-          "type": "nested"
+          "type": "nested",
+          "include_in_parent": true
         },
         "updatedAt_": {
           "type": "date"
@@ -201,7 +204,8 @@ curl -XPUT localhost:9200/objects_list_history -d '
     "objects_list_history": {
       "properties": {
         "objects": {
-          "type": "nested"
+          "type": "nested",
+          "include_in_parent": true
         },
         "updatedAt_": {
           "type": "date"
@@ -240,7 +244,8 @@ curl -XPUT localhost:9200/vehicles_list -d '
     "vehicles_list": {
       "properties": {
         "vehicles": {
-          "type": "nested"
+          "type": "nested",
+          "include_in_parent": true
         },
         "updatedAt_": {
           "type": "date"
@@ -280,7 +285,8 @@ curl -XPUT localhost:9200/vehicles_list_history -d '
     "vehicles_list_history": {
       "properties": {
         "vehicles": {
-          "type": "nested"
+          "type": "nested",
+          "include_in_parent": true
         },
         "updatedAt_": {
           "type": "date"
@@ -308,3 +314,4 @@ curl -XPUT localhost:9200/_river/vehicles_list_history/_meta -d '
     "index": "vehicles_list_history"
   }
 }'
+
