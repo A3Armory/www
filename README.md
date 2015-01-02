@@ -46,7 +46,7 @@ Features:
   ```
     ./bin/plugin --install lmenezes/elasticsearch-kopf/1.4.3
   ```
-  You can access Kopf at http://localhost:9200/_plugin/kopf
+  You can access Kopf at [http://localhost:9200/_plugin/kopf](http://localhost:9200/_plugin/kopf)
   
 3. Install Git Bash (Windows only)
 
