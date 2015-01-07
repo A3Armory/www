@@ -16,7 +16,25 @@ Features:
   ![leaderboard](http://i.imgur.com/aF9MKw5.png)
   
   (Shows same data as the scorebaord, but for the top 1000 players within the last month)
+  
+- Player count (/playercount_history)
 
+  ![player_count](http://i.imgur.com/qJtZzg5.png)
+  
+  (Shows the player count over the last 7 days)
+  
+- Vehicle count (/vehiclecount_history)
+
+  ![vehicle_count](http://i.imgur.com/FK5R4S3.png)
+  
+  (Shows the player count over the last 7 days)
+  
+- Object count (/objectcount_history)
+
+  ![object_count](http://i.imgur.com/cHrZu1B.png)
+  
+  (Shows the object count over the last 7 days)
+  
 
 # Requirements #
   1. [Apache HTTP Server](http://httpd.apache.org/)
