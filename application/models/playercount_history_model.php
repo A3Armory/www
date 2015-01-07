@@ -1,6 +1,12 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 
-class PlayersList_model extends CI_Model {
+
+/*
+ *
+ *
+ */
+
+class PlayerCount_History_model extends CI_Model {
   function __construct() {
     parent::__construct();
   }
@@ -10,7 +16,7 @@ class PlayersList_model extends CI_Model {
     $a3servers = $this->config->item("a3w_servers");
 
     if (!isset($a3servers)) {
-      return new stdClass(); //FIXME: need to redirect to 500
+      return new stdClass();
     }
 
     $serverConfig = NULL;
@@ -22,7 +28,7 @@ class PlayersList_model extends CI_Model {
     }
 
     if (!isset($serverConfig)) {
-      return new stdClass(); //FIXME: need to redirect to 500
+      return new stdClass();
     }
 
     $playersList = $serverConfig["PlayersList_ID"];
@@ -30,17 +36,45 @@ class PlayersList_model extends CI_Model {
       return new stdClass();
     }
 
-    $query =<<<EOF
+    $query = <<<EOF
     {
       "query": {
-        "match": {
-          "_id": "$playersList"
+        "bool": {
+          "must": [
+            {
+              "match": {
+                "_id_old": "$playersList"
+              }
+            },
+            {
+              "range": {
+                "updatedAt_": {
+                  "gt": "now-7d"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "pc": {
+          "date_histogram": {
+            "field": "updatedAt_",
+            "interval": "30m"
+          },
+          "aggs": {
+            "pcs": {
+              "extended_stats": {
+                "script": "_source.players.size()"
+              }
+            }
+          }
         }
       }
     }
 EOF;
 
-    $page = trim($serverConfig["ES_PlayersList_Index"], "/") . "/_search";
+    $page = trim($serverConfig["ES_PlayersList_History_Index"], "/") . "/_search?search_type=count";
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $page);
@@ -49,6 +83,7 @@ EOF;
     curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
+
 
     $json= curl_exec($ch);
     curl_close ($ch);
@@ -63,6 +98,6 @@ EOF;
       return new stdClass();
     }
 
-    return $data->hits->hits[0]->_source->players;
+    return $data->aggregations->pc->buckets;
   }
 }

@@ -41,6 +41,11 @@
 $route['default_controller'] = "scoreboard";
 $route['scoreboard.(json|html)'] = 'scoreboard/index/format/$1';
 $route['leaderboard.(json|html)'] = 'leaderboard/index/format/$1';
+$route['playercount_history.(json|html)'] = 'playercount_history/index/format/$1';
+$route['vehiclecount_history.(json|html)'] = 'vehiclecount_history/index/format/$1';
+$route['objectcount_history.(json|html)'] = 'objectcount_history/index/format/$1';
+
+
 
 
 
